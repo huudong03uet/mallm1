@@ -165,6 +165,7 @@ cython_debug/
 /mallm/utils/memory_bucket/*.json
 /data/datasets/*
 !/data/datasets/etpc_debugging.json
+!/data/datasets/coliee_task4_debugging.json
 
 /notebooks/data
 !/notebooks/data/.gitkeep
