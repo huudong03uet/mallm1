@@ -1,0 +1,16 @@
+[
+    {
+        "example_id": "61dd4303-50a3-4e9d-a8b9-309a1a4b3bae",
+        "dataset_id": "3265_3264",
+        "inputs": [
+            "The artists say the plan will harm French culture and punish those who need help most--performers who have a hard time lining up work."
+        ],
+        "context": [
+            "（基本原則） 第一条 私権は、公共の福祉に適合しなければならない。 ２ 権利の行使及び義務の履行は、信義に従い誠実に行わなければならない。 ３ 権利の濫用は、これを許さない。"
+        ],
+        "references": [
+            "Artists are worried the plan would harm those who need help most - performers who have a difficult time lining up shows."
+        ],
+        "metadata": null
+    }
+]
