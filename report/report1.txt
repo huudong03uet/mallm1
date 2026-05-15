@@ -1,0 +1,92 @@
+R06: Accuracy: 89.04%
+Incorrect example R06-05-E: Final Answer: Yes, Reference: No
+Incorrect example R06-13-I: Final Answer: No, Reference: Yes
+Incorrect example R06-17-I: Final Answer: No, Reference: Yes
+Incorrect example R06-20-A: Final Answer: No, Reference: Yes
+Incorrect example R06-21-I: Final Answer: No, Reference: Yes
+Incorrect example R06-22-U: Final Answer: No, Reference: Yes
+Incorrect example R06-26-E: Final Answer: Yes, Reference: No
+Incorrect example R06-26-I: Final Answer: Yes, Reference: No
+
+=====
+R07: Accuracy: 91.46%
+Incorrect example R07-06-E: Final Answer: No, Reference: Yes
+Incorrect example R07-08-E: Final Answer: Yes, Reference: No
+Incorrect example R07-18-I: Final Answer: Yes, Reference: No
+Incorrect example R07-21-A: Final Answer: No, Reference: Yes
+Incorrect example R07-22-O: Final Answer: No, Reference: Yes
+Incorrect example R07-25-I: Final Answer: No, Reference: Yes
+Incorrect example R07-28-I: Final Answer: Yes, Reference: No
+
+
+=====
+Config default, ngoại trừ (*)
+class Config:
+    # DO NOT overwrite these values once assigned.
+    input_json_file_path: str
+    output_json_file_path: str
+    task_instruction_prompt: str = ""
+    task_instruction_prompt_template: Optional[str] = None (*)
+    endpoint_url: str = ""
+    model_name: str = 'GPT-OSS-120B' (*)
+    api_key: str = "-"
+    max_turns: int = 5 (*)
+    skip_decision_making: bool = False
+    discussion_paradigm: str = "memory"
+    response_generator: str = "simple"
+    decision_protocol: str = "hybrid_consensus"
+    visible_turns_in_memory: int = 2
+    debate_rounds: int = 2
+    concurrent_api_requests: int = 8 (*)
+    use_baseline: bool = False
+    use_chain_of_thought: bool = True
+    num_agents: int = 3
+    num_neutral_agents: int = 0
+    agent_generator: str = "expert"
+    agent_generators_list: list[str] = field(default_factory=list[str])
+    trust_remote_code: bool = False
+    num_samples: Optional[int] = None
+    hf_dataset_split: Optional[str] = "test"
+    hf_token: Optional[str] = None
+    hf_dataset_version: Optional[str] = None
+    hf_dataset_input_column: Optional[str] = None
+    hf_dataset_reference_column: Optional[str] = None
+    hf_dataset_context_column: Optional[str] = None
+    use_ablation: bool = False
+    shuffle_input_samples: bool = False
+    all_agents_generate_first_draft: bool = False
+    all_agents_generate_draft: bool = False
+    voting_protocols_with_alterations: bool = False
+    calculate_persona_diversity: bool = False
+    challenge_final_results: bool = False
+    judge_intervention: Optional[str] = None
+    judge_metric: Optional[str] = None
+    judge_endpoint_url: Optional[str] = None
+    judge_model_name: Optional[str] = None
+    judge_api_key: str = "-"
+    judge_always_intervene: bool = False
+
+=====
+task_instruction_prompt
+"coliee_task4": """You are solving COLIEE Task 4, a binary Japanese legal entailment task.
+
+Given:
+- input: a Japanese legal statement
+- context: relevant Japanese Civil Code article(s)
+
+Decide whether the input statement is entailed by the provided context.
+
+Use only the provided context as legal authority. Do not use outside legal knowledge, case law, commentary, examples, or Civil Code articles not included in the context.
+
+Your response must follow this exact format:
+
+Reason: <brief reason based only on the provided context>
+Answer is: <Yes or No>
+
+Decision rules:
+- Use "Yes" if the input statement is fully supported by the provided context.
+- Use "No" if the input statement is contradicted, only partially supported, requires outside legal rules, depends on missing conditions, ignores an exception, or cannot be inferred from the provided context.
+- The final line must be exactly "Answer is: Yes" or "Answer is: No".
+- Do not output markdown headings, bullet points, tables, JSON, citations, or any extra text.
+- Keep the reason short: one or two sentences only.
+"""
