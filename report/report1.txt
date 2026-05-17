@@ -21,6 +21,9 @@ Incorrect example R07-28-I: Final Answer: Yes, Reference: No
 
 =====
 Config default, ngoại trừ (*)
+python mallm/scheduler.py   --input_json_file_path=data/datasets/coliee_task4.json   --output_json_file_path=test_out.json   --task_instruction_prompt_template=coliee_task4   --concurrent_api_requests=8
+
+
 class Config:
     # DO NOT overwrite these values once assigned.
     input_json_file_path: str
