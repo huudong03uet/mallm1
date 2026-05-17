@@ -1,3 +1,24 @@
+# Run file
+
+- Clone project và data
+- Sửa prompt trong folder: mallm/utils/task_instructions.py
+- Chạy lệnh:
+
+```bash
+python mallm/scheduler.py   --input_json_file_path=path/to/input.json   --output_json_file_path=path/to/output.json   --task_instruction_prompt_template=coliee_task4   --concurrent_api_requests=8 --endpoint_url="model_endpoint_url" --model_name="model_name"
+```
+
+- Đánh giá
+
+```bash
+python eval.py --path/to/output.json
+```
+
+
+
+-----------
+
+
 <br />
 <p align="center">
 <a><img src="https://raw.githubusercontent.com/Multi-Agent-LLMs/mallm/refs/heads/main/image/mallm.webp" alt="MALLM" width="128" height="128" title="MALLM"></a>
